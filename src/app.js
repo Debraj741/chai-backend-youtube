@@ -22,4 +22,13 @@ app.use(express.static("public"))
 //Set Cookie Parser to access or Set cookie in user cookies
 app.use(cookieParser())
 
+// Routes Import
+import userRouter from "./routes/user.routes.js"
+
+// Routes Declaration - As I segregate controllers so middleware [.use()] need , here direct [.get()..etc] not work.. Best Practice is given below..
+
+app.use("/api/v1/users", userRouter)
+
+// https://localhost:8000/api/v1/users/register  =>Url create like this.
+
 export {app}
